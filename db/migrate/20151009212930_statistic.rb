@@ -2,7 +2,7 @@ class Statistic < ActiveRecord::Migration
   def change
     create_table :statistics do |t|
       
-      t.belongs_to :word
+      t.belongs_to :words
 
       t.integer :adw_top
       t.integer :adw_right

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20151009212930) do
   end
 
   create_table "statistics", force: :cascade do |t|
-    t.integer "word_id"
+    t.integer "words_id"
     t.integer "adw_top"
     t.integer "adw_right"
     t.integer "adw_total"
