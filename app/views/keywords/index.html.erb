@@ -1,1 +1,25 @@
-keywords#index
+<% unless @keywords.empty? %>
+  <table class="table">
+      <% @keywords.each do |set| %>
+          <tr>
+            <td>
+              <%= link_to set.name, keyword_path(set.id) %>
+            </td>
+            <td>
+              <%= set.description %>
+            </td>
+            <td>
+              <%= link_to "delete", set, method: :delete, data: { confirm: "Are you sure?" } %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </td>
+          </tr>
+      <% end %>
+  </table>
+<% else %>
+  <div class="center jumbotron">
+    <h2>
+      There are no keywords sets. Please add one. 
+    </h2>
+    <%= link_to "Add keywords", new_keyword_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

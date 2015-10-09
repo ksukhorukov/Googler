@@ -79,16 +79,15 @@ proxies = JSON.parse(curl.get('https://happy-proxy.com/fresh_proxies?key=2c86230
 #  {"ip_port"=>"194.44.15.58:8080"}]
 
 page = ""
-
+curl.proxy(proxies.sample["ip_port"])
 1000.times do |i|
-  puts "Request number: #{i+1}"
-  # if i % 50 == 0
-  #    curl.user_agent_alias = AGENT_ALIASES.keys.sample
-  #    curl.proxy(proxies.sample["ip_port"])
-  # end
+ puts "Request number: #{i+1}"
+
+  curl.user_agent_alias = AGENT_ALIASES.keys.sample
   rnd = SecureRandom.urlsafe_base64(22)
-  page = curl.get("https://www.google.ru/search?q=ruby&gws_rd=cr,ssl&ei=#{rnd}")
+  page = curl.get("https://www.google.ru/search?q=marketing&gfe_rd=cr&ei=#{rnd}")
+  puts page
+
 end
 
-puts page
 

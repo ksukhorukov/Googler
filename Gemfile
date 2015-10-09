@@ -37,6 +37,10 @@ gem 'curl', '~> 0.0.9'
 gem 'rails_config', '~> 0.4.2'
 gem 'carrierwave', '~> 0.10.0'
 gem 'carrierwave_backgrounder', '~> 0.4.2'
+gem 'nokogiri', '~> 1.6.6.2'
+gem 'sidekiq', '~> 3.5.0'
+gem 'sinatra', '~> 1.4.6', require: false
+gem 'slim', '~> 3.0.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
