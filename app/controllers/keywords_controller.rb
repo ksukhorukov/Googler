@@ -20,7 +20,10 @@ class KeywordsController < ApplicationController
     pp keyword_params
     @keyword = Keyword.new(keyword_params)
     if @keyword.save
-      AdwordsWorker.perform_async(@keyword.id)
+      words = File.read(@keyword.keys.file.path).split(',')
+      words.each_slice(50) do |slice|
+        AdwordsWorker.perform_async(@keyword.id, slice)
+      end
       flash[:success] = "New keywords set created!"
       redirect_to keywords_path
     else
