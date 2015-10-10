@@ -43,7 +43,7 @@
             </td> 
             <td><%= stats.links_total %></td> 
             <td><%= stats.total_results %></td> 
-            <td><%= link_to "Open", cache_path(stats.cache.id) %></td>    
+            <td><%= link_to "Open", cache_path(stats.cache.id), :target => "_blank"  %></td>    
           </tr>
       <% end %>
   </table>
