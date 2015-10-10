@@ -12,7 +12,7 @@ class CreateStatistic < ActiveRecord::Migration
       t.integer :non_adw
       t.string  :urls_non_adw
       t.integer :links_total
-      t.integer :total_results
+      t.string  :total_results
       t.string  :word
         
     end

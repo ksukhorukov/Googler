@@ -11,7 +11,13 @@ module GoogleParser
     doc = page_body 
     result = doc.css("#resultStats").text
     if result 
-      total_number_of_results = result.split(' ')[1].gsub(',','').to_i
+      #total_number_of_results = result.split(' ')[1].gsub(',','').to_i
+      total_number_of_results = result.split(' ')[1]
+      # unless total_number_of_results
+      #   total_number_of_results.gsub(',','').to_i
+      # else
+      #   0
+      # end
     else
       0
     end

@@ -43,10 +43,13 @@
             </td> 
             <td><%= stats.links_total %></td> 
             <td><%= stats.total_results %></td> 
-            <td>Link for cache</td>    
+            <td><%= link_to "Open", cache_path(stats.cache.id) %></td>    
           </tr>
       <% end %>
   </table>
+  <div class="container" align="center">
+    <%= will_paginate @statistics, :renderer => BootstrapPagination::Rails %>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <h2>
