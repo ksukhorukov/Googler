@@ -1,0 +1,21 @@
+<% unless @keywords.empty? %>
+  <table class="table">
+      <% @keywords.each do |set| %>
+          <tr>
+            <td>
+              <%= link_to set.name, statistic_path(set.id) %>
+            </td>
+            <td>
+              <%= set.description %>
+            </td>
+          </tr>
+      <% end %>
+  </table>
+<% else %>
+  <div class="center jumbotron">
+    <h2>
+      There is no statistics. Please add a set with keywords first. 
+    </h2>
+    <%= link_to "Add keywords", new_keyword_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

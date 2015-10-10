@@ -1,0 +1,56 @@
+<% unless @statistics.empty? %>
+  <table class="table table-bordered">
+      <tr>
+          <th>Keyword</th>
+          <th>AdWords top</th>
+          <th>AdWords right</th>
+          <th>AdWords total</th>
+          <th>URLs of top AdWords</th>
+          <th>URLs of right AdWords</th>
+          <th>Non-Adwords results</th>
+          <th>Non-Adwords urls</th>
+          <th>Total links on page</th>
+          <th>Total SERP results</th>
+          <th>Cached SERP</th>
+      </tr>
+      <% @statistics.each do |stats| %>
+          <tr>
+            <td><%= stats.word %></td>
+            <td><%= stats.adw_top %></td>
+            <td><%= stats.adw_right %></td>
+            <td><%= stats.adw_total %></td>
+            <td>
+              <ul>
+              <% stats.top_urls.split(',').each do |url| %>
+                <li><%= link_to url, url %></li>
+              <% end %>
+              </ul>
+            </td>
+            <td>
+              <ul>
+              <% stats.right_urls.split(',').each do |url| %>
+                <li><%= link_to url, url %></li>
+              <% end %>
+              </ul>
+            </td>
+            <td><%= stats.non_adw %></td>
+            <td>
+              <ul>
+              <% stats.urls_non_adw.split(',').each do |url| %>
+                <li><%= link_to url, url %></li>
+              <% end %>
+              </ul>
+            </td> 
+            <td><%= stats.links_total %></td> 
+            <td><%= stats.total_results %></td> 
+            <td>Link for cache</td>    
+          </tr>
+      <% end %>
+  </table>
+<% else %>
+  <div class="center jumbotron">
+    <h2>
+      There are no statistics. Please add a set with keywords first. 
+    </h2>
+  </div>
+<% end %>

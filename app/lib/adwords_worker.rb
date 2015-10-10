@@ -4,8 +4,6 @@ class AdwordsWorker
   
   #sidekiq_options queue: "high"
 
-
-
   def perform(keywords_set_id, words)
 
      curl = CURL.new
@@ -30,6 +28,9 @@ class AdwordsWorker
       statistics.total_results = totoal_results(page_body)
 
       statistics.save
+
+      cache = Cache.create(:statistic_id => statistics.id, :cache => page)
+
 
     end
   end
