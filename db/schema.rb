@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20151009215314) do
   end
 
   create_table "words", force: :cascade do |t|
-    t.integer  "keywords_id"
-    t.string   "name",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "keyword_id"
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

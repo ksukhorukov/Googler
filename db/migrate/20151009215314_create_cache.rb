@@ -1,4 +1,4 @@
-class CreateCaches < ActiveRecord::Migration
+class CreateCache < ActiveRecord::Migration
   def change
     create_table :caches do |t|
       t.belongs_to :words

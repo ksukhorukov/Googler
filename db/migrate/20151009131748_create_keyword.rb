@@ -1,4 +1,4 @@
-class Keywords < ActiveRecord::Migration
+class CreateKeyword < ActiveRecord::Migration
   def change
     create_table :keywords do |t|
       t.string :name, null: false, unique: true
