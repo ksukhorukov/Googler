@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'pp'
 
 def totoal_results(page_body)
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#resultStats").text
   if result 
     total_number_of_results = result.split(' ')[1].gsub(',','').to_i
@@ -15,7 +15,7 @@ end
 
 def number_of_top_adwords_blocks(page_body)
   #id: _Ltg
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#_Ltg")
   if result 
     result.css(".ads-ad").count
@@ -26,7 +26,7 @@ end
 
 def number_of_right_adwords_blocks(page_body)
   #id: _Stg
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#_Stg")
   if result 
     result.css(".ads-ad").count
@@ -36,7 +36,7 @@ def number_of_right_adwords_blocks(page_body)
 end
 
 def total_number_of_adwords_blocks(page_body)
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("._Ak")
   if result 
     result.count
@@ -47,7 +47,7 @@ end
 
 def green_urls_on_top_adwords(page_body)
   #<cite> text inside div with class ads-visurl
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#_Ltg")
   if result 
     urls = []
@@ -56,13 +56,13 @@ def green_urls_on_top_adwords(page_body)
     end
     urls
   else
-    0
+    []
   end
 end
 
 def green_urls_on_right_adwords(page_body)
   #<cite> text inside div with class ads-visurl
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#_Stg")
   if result 
     urls = []
@@ -71,13 +71,13 @@ def green_urls_on_right_adwords(page_body)
     end
     urls
   else
-    0
+    []
   end
 end
 
 def number_of_non_adwords_results(page_body)
   #links inside div with id #ires
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#ires")
   if result 
     result.css(".g").count
@@ -88,7 +88,7 @@ end
 
 def urls_of_non_adwords(page_body)
   #urls inside .g class of the page
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   result = doc.css("#ires")
   if result 
     urls = []
@@ -97,12 +97,12 @@ def urls_of_non_adwords(page_body)
     end
     urls
   else
-    0
+    []
   end
 end
 
 def total_number_of_links(page_body)
-  doc = Nokogiri::HTML(page_body) 
+  doc = page_body 
   links = doc.css('a')
   if links 
     hrefs = links.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if {|href| href.empty?}
@@ -114,7 +114,7 @@ end
 
 
 
-page_body = File.read('./test/parsing/result.html')
+page_body = Nokogiri::HTML(File.read('./test/parsing/result.html'))
 
 
 puts totoal_results(page_body)

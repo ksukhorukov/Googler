@@ -5,6 +5,6 @@ class Keyword < ActiveRecord::Base
   validates :name, :description, :keys, presence: true
   validates :name, uniqueness: true
 
-  has_many :words, dependent: :delete_all
+  has_many :statistics, dependent: :delete_all
 
 end

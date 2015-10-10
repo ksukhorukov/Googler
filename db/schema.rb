@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20151009215314) do
   enable_extension "plpgsql"
 
   create_table "caches", force: :cascade do |t|
-    t.integer  "words_id"
+    t.integer  "statistic_id"
     t.string   "cache"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "keywords", force: :cascade do |t|
@@ -32,23 +32,17 @@ ActiveRecord::Schema.define(version: 20151009215314) do
   end
 
   create_table "statistics", force: :cascade do |t|
-    t.integer "words_id"
+    t.integer "keyword_id"
     t.integer "adw_top"
     t.integer "adw_right"
     t.integer "adw_total"
     t.string  "top_urls"
-    t.string  "left_urls"
+    t.string  "right_urls"
     t.integer "non_adw"
     t.string  "urls_non_adw"
     t.integer "links_total"
     t.integer "total_results"
-  end
-
-  create_table "words", force: :cascade do |t|
-    t.integer  "keyword_id"
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "word"
   end
 
 end
