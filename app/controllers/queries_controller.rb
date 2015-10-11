@@ -7,7 +7,7 @@ class QueriesController < ApplicationController
   def create
     type = params['type']
     unless %w[query1 query2 query3].include? type
-      render :new
+      render :index
     else
       result  = ''
       if type == 'query1'
