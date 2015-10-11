@@ -1,18 +1,21 @@
 <% unless @statistics.empty? %>
   <table class="table table-bordered">
-      <tr>
-          <th>Keyword</th>
-          <th>AdWords top</th>
-          <th>AdWords right</th>
-          <th>AdWords total</th>
-          <th>URLs of top AdWords</th>
-          <th>URLs of right AdWords</th>
-          <th>Non-Adwords results</th>
-          <th>Non-Adwords urls</th>
-          <th>Total links on page</th>
-          <th>Total SERP results</th>
-          <th>Cached SERP</th>
-      </tr>
+      <thead>
+        <tr class="withoutTransfer">
+            <th>Keyword</th>
+            <th>AdWords top</th>
+            <th>AdWords right</th>
+            <th>AdWords total</th>
+            <th>URLs of top AdWords</th>
+            <th>URLs of right AdWords</th>
+            <th>Non-Adwords results</th>
+            <th>Non-Adwords urls</th>
+            <th>Total links on page</th>
+            <th>Total SERP results</th>
+            <th>Cached SERP</th>
+        </tr>
+      </thead>
+      <tbody>
       <% @statistics.each do |stats| %>
           <tr>
             <td><%= stats.word %></td>
@@ -46,6 +49,7 @@
             <td><%= link_to "Open", cache_path(stats.cache.id), :target => "_blank"  %></td>    
           </tr>
       <% end %>
+      </tbody>
   </table>
   <div class="container" align="center">
     <%= will_paginate @statistics, :renderer => BootstrapPagination::Rails %>

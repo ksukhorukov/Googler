@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   root :to => "home#index"
 
   resources :keywords
-  resources :statistics
-  resources :reports
-  resources :queries
+  resources :statistics, only: [:index, :show]
+  resources :queries, only: [:new, :create]
   resources :cache, only: [:show]
 
   mount Sidekiq::Web, at: '/sidekiq'
