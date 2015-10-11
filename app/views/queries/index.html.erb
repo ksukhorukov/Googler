@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">How many URLs contain the word in AdWords</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_tag('/queries', method: 'post') do %>
+          <%= label_tag(:word, "The Word:") %>
+          <%= text_field_tag(:word) %>
+          <%= hidden_field_tag(:type, 'query1') %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">How many times a specific URL shows up in SEO</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_tag('/queries', method: 'post') do %>
+          <%= label_tag(:url, "URL:") %>
+          <%= text_field_tag(:url) %>
+          <%= hidden_field_tag(:type, 'query2') %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   resources :keywords
   resources :statistics, only: [:index, :show]
-  resources :queries, only: [:new, :create]
+  resources :queries, only: [:index, :create]
   resources :cache, only: [:show]
 
   mount Sidekiq::Web, at: '/sidekiq'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
