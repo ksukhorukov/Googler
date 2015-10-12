@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151012085521) do
 
   create_table "caches", force: :cascade do |t|
     t.integer  "statistic_id"
-    t.string   "cache"
+    t.text     "cache"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   root :to => "home#index"
 
+  namespace :api, defaults: { format: 'json' } do 
+    resources :keywords 
+    resources :statistics, only: [:index, :show]
+    resources :queries, only: [ :index ]
+  end
+
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

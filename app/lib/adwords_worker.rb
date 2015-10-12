@@ -4,14 +4,19 @@ class AdwordsWorker
   
   #sidekiq_options queue: "high"
 
+ 
+
   def perform(keywords_set_id, words)
 
      curl = CURL.new
-
+     
      words.each do |keyword|
 
-      page = curl.get(generate_url(keyword))
-      page_body = Nokogiri::HTML(page)
+      agent = Mechanize.new 
+      page = agent.get('http://www.google.com')
+      google_form = page.form('f')
+      google_form.q = keyword
+      page_body = agent.submit(google_form)
 
       statistics = Statistic.new
 
@@ -29,7 +34,7 @@ class AdwordsWorker
 
       statistics.save
 
-      cache = Cache.create(:statistic_id => statistics.id, :cache => page)
+      cache = Cache.create(:statistic_id => statistics.id, :cache => curl.get(page_body.uri.to_s))
 
 
     end

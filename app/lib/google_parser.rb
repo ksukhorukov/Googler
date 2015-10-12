@@ -9,15 +9,9 @@ module GoogleParser
 
   def totoal_results(page_body)
     doc = page_body 
-    result = doc.css("#resultStats").text
+    result = doc.search("#resultStats").text
     if result 
-      #total_number_of_results = result.split(' ')[1].gsub(',','').to_i
       total_number_of_results = result.split(' ')[1]
-      # unless total_number_of_results
-      #   total_number_of_results.gsub(',','').to_i
-      # else
-      #   0
-      # end
     else
       0
     end
@@ -26,9 +20,9 @@ module GoogleParser
   def number_of_top_adwords_blocks(page_body)
     #id: _Ltg
     doc = page_body 
-    result = doc.css("#_Ltg")
+    result = doc.search("#_Ltg")
     if result 
-      result.css(".ads-ad").count
+      result.search(".ads-ad").count
     else
       0
     end
@@ -37,9 +31,9 @@ module GoogleParser
   def number_of_right_adwords_blocks(page_body)
     #id: _Stg
     doc = page_body 
-    result = doc.css("#_Stg")
+    result = doc.search("#_Stg")
     if result 
-      result.css(".ads-ad").count
+      result.search(".ads-ad").count
     else
       0
     end
@@ -47,7 +41,7 @@ module GoogleParser
 
   def total_number_of_adwords_blocks(page_body)
     doc = page_body 
-    result = doc.css("._Ak")
+    result = doc.search("._Ak")
     if result 
       result.count
     else
@@ -58,11 +52,11 @@ module GoogleParser
   def green_urls_on_top_adwords(page_body)
     #<cite> text inside div with class ads-visurl
     doc = page_body 
-    result = doc.css("#_Ltg")
+    result = doc.search("#_Ltg")
     if result 
       urls = []
-      result.css(".ads-visurl").each do |block|
-        urls << block.css("cite").text
+      result.search(".ads-visurl").each do |block|
+        urls << block.search("cite").text
       end
       urls
     else
@@ -73,11 +67,11 @@ module GoogleParser
   def green_urls_on_right_adwords(page_body)
     #<cite> text inside div with class ads-visurl
     doc = page_body 
-    result = doc.css("#_Stg")
+    result = doc.search("#_Stg")
     if result 
       urls = []
-      result.css(".ads-visurl").each do |block|
-        urls << block.css("cite").text
+      result.search(".ads-visurl").each do |block|
+        urls << block.search("cite").text
       end
       urls
     else
@@ -88,9 +82,9 @@ module GoogleParser
   def number_of_non_adwords_results(page_body)
     #links inside div with id #ires
     doc = page_body 
-    result = doc.css("#ires")
+    result = doc.search("#ires")
     if result 
-      result.css(".g").count
+      result.search(".g").count
     else
       0
     end
@@ -99,11 +93,11 @@ module GoogleParser
   def urls_of_non_adwords(page_body)
     #urls inside .g class of the page
     doc = page_body 
-    result = doc.css("#ires")
+    result = doc.search("#ires")
     if result 
       urls = []
-      result.css(".kv").each do |block|
-        urls << block.css("cite").text
+      result.search(".kv").each do |block|
+        urls << block.search("cite").text
       end
       urls
     else
@@ -113,7 +107,7 @@ module GoogleParser
 
   def total_number_of_links(page_body)
     doc = page_body 
-    links = doc.css('a')
+    links = doc.search('a')
     if links 
       hrefs = links.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if {|href| href.empty?}
       hrefs.count

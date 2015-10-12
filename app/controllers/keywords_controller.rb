@@ -16,12 +16,11 @@ class KeywordsController < ApplicationController
   end
 
   def create
-    puts "Keyword params"
-    pp keyword_params
     @keyword = Keyword.new(keyword_params)
     @keyword.user_id = current_user.id
     if @keyword.save
       words = File.read(@keyword.keys.file.path).split(',')
+      puts "Words: #{words}"
       AdwordsWorker.perform_async(@keyword.id, words)
       flash[:success] = "New keywords set created! Performing statistics collection on the background."
       redirect_to keywords_path
