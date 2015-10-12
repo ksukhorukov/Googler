@@ -1,12 +1,8 @@
 class AdwordsWorker
   include Sidekiq::Worker 
   include GoogleParser
-  
-  #sidekiq_options queue: "high"
 
- 
-
-  def perform(keywords_set_id, words)
+  def perform(keywords_set_id, user_id, words)
 
      curl = CURL.new
      
@@ -31,11 +27,11 @@ class AdwordsWorker
       statistics.urls_non_adw = urls_of_non_adwords(page_body).join(',')
       statistics.links_total = total_number_of_links(page_body)
       statistics.total_results = totoal_results(page_body)
+      statistics.user_id = user_id
 
       statistics.save
 
-      cache = Cache.create(:statistic_id => statistics.id, :cache => curl.get(page_body.uri.to_s))
-
+      Cache.create(:statistic_id => statistics.id, :cache => curl.get(page_body.uri.to_s))
 
     end
   end

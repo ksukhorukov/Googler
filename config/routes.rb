@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  use_doorkeeper
   root :to => "home#index"
 
   namespace :api, defaults: { format: 'json' } do 

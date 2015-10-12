@@ -2,11 +2,6 @@ module GoogleParser
 
   require 'securerandom'
 
-  def generate_url(word)
-    rnd = SecureRandom.urlsafe_base64(22)
-    "https://www.google.com/search?q=#{word}&gfe_rd=cr&ei=#{rnd}"
-  end
-
   def totoal_results(page_body)
     doc = page_body 
     result = doc.search("#resultStats").text

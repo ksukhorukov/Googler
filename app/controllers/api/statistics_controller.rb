@@ -1,12 +1,12 @@
 module Api
- class StatisticsController < ApplicationController
+ class StatisticsController < BaseController
 
   def index
-    render json: Statistic.all.to_json
+    render json: User.where(:user_id => current_user_doorkeeper).statistics.to_json
   end
 
   def show
-    @statistics = Statistic.find_by_id(params[:id])
+    @statistics = User.where(:user_id => current_user_doorkeeper.id).statistics.find_by_id(params[:id])
     render json: @statistics.to_json
   end 
 

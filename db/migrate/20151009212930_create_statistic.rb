@@ -3,6 +3,7 @@ class CreateStatistic < ActiveRecord::Migration
     create_table :statistics do |t|
       
       t.belongs_to :keyword
+      t.belongs_to :user
 
       t.integer :adw_top
       t.integer :adw_right

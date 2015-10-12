@@ -1,5 +1,5 @@
 module Api
- class QueriesController < ApplicationController
+ class QueriesController < BaseController
   
   include StatisticsQueries
 

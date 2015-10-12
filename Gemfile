@@ -6,7 +6,7 @@ ruby '2.1.5'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg', '~> 0.18.3'
-#gem 'sqlite3', '~> 1.3.11'
+gem 'sqlite3', '~> 1.3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.5.1'
@@ -45,6 +45,8 @@ gem 'sidekiq', '~> 3.5.0'
 gem 'sinatra', '~> 1.4.6', require: false
 gem 'slim', '~> 3.0.6'
 gem 'mechanize', '~> 2.7.3'
+gem 'doorkeeper', '~> 3.0.1'
+gem 'oauth2', '~> 1.0.0'
 
 
 group :development, :test do
@@ -55,13 +57,12 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
 group :production do 
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'puma', '~> 2.14.0'
+  #gem 'thin', '~> 1.6.4'
 end
 
