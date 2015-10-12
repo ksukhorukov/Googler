@@ -9,7 +9,8 @@ common: &default
 development:
   <<: *default
   database: googler_development
-  
+
+test:
   <<: *default
   database: googler_test 
 
