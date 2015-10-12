@@ -42,7 +42,6 @@ module StatisticsQueries
     statistics.each do |stats|
       urls = stats.top_urls + ',' + urls
       urls = stats.right_urls + ',' + urls
-      urls = stats.urls_non_adw + ',' + urls
     end
     urls.split(',').each do |url|
       counter += 1 if url.scan(/>/).count >= 1 unless url.nil?
