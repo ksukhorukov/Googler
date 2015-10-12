@@ -33,3 +33,36 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">How many URLs have two or more '/' characters</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_tag('/queries', method: 'post') do %>
+          <%= hidden_field_tag(:type, 'query3') %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">How many URLs have one or more '>' characters</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_tag('/queries', method: 'post') do %>
+          <%= hidden_field_tag(:type, 'query4') %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
