@@ -3,7 +3,7 @@ require 'csv'
 class KeywordsController < ApplicationController
 
   def index
-    @keywords = Keyword.all 
+    @keywords = Keyword.where(user_id: current_user.id)
   end
 
   def show
@@ -19,6 +19,7 @@ class KeywordsController < ApplicationController
     puts "Keyword params"
     pp keyword_params
     @keyword = Keyword.new(keyword_params)
+    @keyword.user_id = current_user.id
     if @keyword.save
       words = File.read(@keyword.keys.file.path).split(',')
       AdwordsWorker.perform_async(@keyword.id, words)

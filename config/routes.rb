@@ -2,13 +2,14 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'users/new'
-
   root :to => "home#index"
 
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
   resources :users
-  get 'signup'  => 'users#new'
-  
   resources :keywords
   resources :statistics, only: [:index, :show]
   resources :queries, only: [:index, :create]

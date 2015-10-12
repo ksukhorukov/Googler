@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20151012085521) do
   end
 
   create_table "keywords", force: :cascade do |t|
-    t.integer  "statistics_id"
-    t.string   "name",          null: false
-    t.string   "description",   null: false
-    t.string   "keys",          null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.string   "name",        null: false
+    t.string   "description", null: false
+    t.string   "keys",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "statistics", force: :cascade do |t|
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20151012085521) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "remember_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

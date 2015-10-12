@@ -4,6 +4,9 @@
   <h2>
     You could easily monitor the AdWords statistics with our help!
   </h2>
-
-  <%= link_to "Add keywords to monitor", new_keyword_path, class: "btn btn-lg btn-primary" %>
+  <% if logged_in? %>
+    <%= link_to "Add keywords to monitor", new_keyword_path, class: "btn btn-lg btn-primary" %>
+  <% else %>
+    <%= link_to "Enjoy!", login_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
