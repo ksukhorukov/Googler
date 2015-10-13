@@ -39,7 +39,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'curl', '~> 0.0.9'
 gem 'rails_config', '~> 0.4.2'
 gem 'carrierwave', '~> 0.10.0'
-gem 'carrierwave_backgrounder', '~> 0.4.2'
 gem 'nokogiri', '~> 1.6.6.2'
 gem 'sidekiq', '~> 3.5.0'
 gem 'sinatra', '~> 1.4.6', require: false

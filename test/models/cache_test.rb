@@ -10,9 +10,13 @@ class CacheTest < ActiveSupport::TestCase
     assert @cache.valid?
   end
 
-  test "cache invalid when has no cached pafe" do 
+  test "cache invalid when has no cached page" do 
     @cache.cache = nil
-    pp @cache
+    assert_not @cache.valid?
+  end
+
+  test "cache invalid when not attached to statistics" do 
+    @cache.statistic_id = nil
     assert_not @cache.valid?
   end
 
