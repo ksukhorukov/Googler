@@ -57,13 +57,7 @@ module GoogleParser
   end
 
   def total_number_of_adwords_blocks(page_body)
-    doc = page_body 
-    result = doc.search("._Ak")
-    if result 
-      result.count
-    else
-      0
-    end
+    number_of_top_adwords_blocks(page_body) + number_of_right_adwords_blocks(page_body)
   end
 
   def green_urls_on_top_adwords(page_body)

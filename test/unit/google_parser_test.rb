@@ -21,7 +21,7 @@ class GoogleParserTest < ActiveSupport::TestCase
   end
 
   test "correct total number of adwords blocks" do
-    assert_equal 2, total_number_of_adwords_blocks(@page_body)
+    assert_equal 10, total_number_of_adwords_blocks(@page_body)
   end
 
   test "green urls on top adwords" do 
