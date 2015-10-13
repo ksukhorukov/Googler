@@ -29,7 +29,7 @@ $ rails s
 
 ## Debug
 
-Sometimes Mechanize fails to open google.com and make a search query. In this case go to http://localhost:3000/sidekiq and check for any error messages in the default queue.
+Sometimes Mechanize fails to open google.com and make a search query. In this case go to http://localhost:3000/sidekiq and check the default queue for any error messages.
 
 ## API 
 
