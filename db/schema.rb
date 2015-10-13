@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151012184131) do
 
   create_table "caches", force: :cascade do |t|
     t.integer  "statistic_id"
-    t.text     "cache"
+    t.text     "cache",        null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -75,21 +75,21 @@ ActiveRecord::Schema.define(version: 20151012184131) do
   create_table "statistics", force: :cascade do |t|
     t.integer "keyword_id"
     t.integer "user_id"
-    t.integer "adw_top"
-    t.integer "adw_right"
-    t.integer "adw_total"
-    t.string  "top_urls"
-    t.string  "right_urls"
-    t.integer "non_adw"
-    t.string  "urls_non_adw"
-    t.integer "links_total"
-    t.string  "total_results"
-    t.string  "word"
+    t.integer "adw_top",       null: false
+    t.integer "adw_right",     null: false
+    t.integer "adw_total",     null: false
+    t.string  "top_urls",      null: false
+    t.string  "right_urls",    null: false
+    t.integer "non_adw",       null: false
+    t.string  "urls_non_adw",  null: false
+    t.integer "links_total",   null: false
+    t.string  "total_results", null: false
+    t.string  "word",          null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name",            null: false
+    t.string   "email",           null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.datetime "created_at",      null: false
