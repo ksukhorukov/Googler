@@ -31,8 +31,12 @@ class AdwordsWorker
 
       statistics.save
 
-      Cache.create(:statistic_id => statistics.id, :cache => curl.get(page_body.uri.to_s))
-
+      cached = curl.get(page_body.uri.to_s)
+      cache = Cache.new(:statistic_id => statistics.id)
+      cache.save
+      cache.cache = cached
+      cache.save
+  
     end
   end
 
