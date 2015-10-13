@@ -23,7 +23,7 @@ $ bundle
 $ rake db:setup
 $ rake test
 $ redis-server
-$ sidekiq
+$ sidekiq -C config/sidekiq.yml
 $ rails s
 ```
 
