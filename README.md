@@ -21,6 +21,7 @@ $ cd Googler
 $ rvm use ruby-2.1.5@googler --create
 $ bundle
 $ rake db:setup
+$ rake test
 $ redis-server
 $ sidekiq
 $ rails s
