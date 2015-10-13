@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pp'
 
 class UserUploadKeywordsTest < ActionDispatch::IntegrationTest
 
@@ -14,6 +15,7 @@ class UserUploadKeywordsTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     keywords_file = fixture_file_upload(Rails.root.join('test/files/test.csv'),'text/csv')
+
 
     assert_difference('Keyword.count') do
       post keywords_path, keyword: { name: 'test keywords', description: 'test description', keys: keywords_file } 

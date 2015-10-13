@@ -8,7 +8,7 @@ class KeywordsController < ApplicationController
 
   def show
     keywords_set = Keyword.find(params[:id])
-    @words = File.read(keywords_set.keys.path).split(',')
+    @words = File.read(keywords_set.keys.path).split(',').sort
   end
 
   def new
@@ -21,6 +21,7 @@ class KeywordsController < ApplicationController
     if @keyword.save
       words = File.read(@keyword.keys.file.path).split(',')
       words.each_slice(100) do |words_slice|
+	puts "Words: #{words_slice}"
         AdwordsWorker.perform_async(@keyword.id, current_user.id, words_slice)
       end
       flash[:success] = "New keywords set created! Performing statistics collection on the background."

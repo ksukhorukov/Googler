@@ -1,7 +1,16 @@
-<ul>
-  <% @words.each do |word| %>
-  <li>
-    <%= word %>
-  </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-bordered">
+      <tr>
+        <th>#</th>
+        <th>Keyword</th>
+      </tr>
+      <% @words.each_with_index do |word, idx| %>
+        <tr>
+          <td><%= idx + 1%></td>
+          <td><%= word %></td>
+        </tr>
+        <% end %>
+    </table>
+  <div class="col-md-6 col-md-offset-3">
+</div>
