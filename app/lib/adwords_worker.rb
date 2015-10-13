@@ -5,10 +5,11 @@ class AdwordsWorker
   def perform(keywords_set_id, user_id, words)
 
      curl = CURL.new
+     agent = Mechanize.new
      
      words.each do |keyword|
-
-      agent = Mechanize.new 
+      
+      agent.user_agent_alias = random_agent
       page = agent.get('http://www.google.com')
       google_form = page.form('f')
       google_form.q = keyword
