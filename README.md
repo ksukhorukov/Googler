@@ -1,6 +1,6 @@
 # AdWords monitoring application
 
-Project technical is [here][todo].
+Technical description of the project can be found [here][todo].
 
 Generally speaking you signup, upload comma separated file with the search keywords and monitor the AdWords statistics. Profit!
 
@@ -43,11 +43,17 @@ You should get something like this at the end:
 
 Now we need to get the socalled authentication token. In order to do this, launch ``rails c`` and execute the following code (variables with your own values):
 
-``callback = "http://localhost:3001/auth/adwords/callback"
+``
+callback = "http://localhost:3001/auth/adwords/callback"
+
 app_id = "fc4fb01fcea038a920d22b64eb411a942a0287660c3dfc8bfd2991885e9a6c94"
+
 secret = "160d6e7fbf98ca5bd49a653c9e386fc48eb77c40540488d28bb067b6bb5723bf"
+
 client = OAuth2::Client.new(app_id, secret, site: "http://localhost:3000")
-client.auth_code.authorize_url(redirect_uri: callback)``
+
+client.auth_code.authorize_url(redirect_uri: callback)
+``
 
 It will throws out the URL:
 
