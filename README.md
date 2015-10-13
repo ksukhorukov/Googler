@@ -32,7 +32,7 @@ Enjoy!
 
 Application provides OAuth2 RESTful API. How to make it up and running?
 
-Go to http://localhost:3000/oauth/applications and create new application.
+Go to ``http://localhost:3000/oauth/applications`` and create new application.
 For instance name will be ``Test Client`` and redirect URL ``http://localhost:3001/auth/adwords/callback``
 
 You should get something like this at the end:
