@@ -41,7 +41,7 @@ You should get something like this at the end:
 *  Secret: ``160d6e7fbf98ca5bd49a653c9e386fc48eb77c40540488d28bb067b6bb5723bf``
 *  Callback urls: ``http://localhost:3001/auth/adwords/callback``
 
-Now we need to get the socalled authentication token. In order to do this, launch ``rails c`` and execute the following code (variables with your own values):
+Now we need to get the socalled authentication token. In order to do this, launch ``rails c`` and execute the following code (change variables with your own values):
 
 ```
 callback = "http://localhost:3001/auth/adwords/callback"
