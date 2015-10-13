@@ -105,7 +105,7 @@ curl http://localhost:3000/api/statistics?access_token=ee0753e7206e6baae97e553ca
 curl http://localhost:3000/api/queries?access_token=ee0753e7206e6baae97e553cae1d9cade066161c6ffcc794606ba8a82c32b86d&type=query1&word=booking
 ```
 
-## Thats all. Have fun!
+## Have fun!
 
 [todo]: <https://github.com/ksukhorukov/Googler/blob/master/nimbl3_test_task.pdf>
 
