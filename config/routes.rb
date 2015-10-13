@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   use_doorkeeper
   root :to => "home#index"
 
-  namespace :api, defaults: { format: 'json' } do 
+  #namespace :api, defaults: { format: 'json' } do 
+  namespace :api  do 
     resources :keywords 
     resources :statistics, only: [:index, :show]
     resources :queries, only: [ :index ]

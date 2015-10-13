@@ -6,7 +6,7 @@ class QueriesController < ApplicationController
 
   def create
     type = params['type']
-    unless %w[query1 query2 query3 query4].include? type
+    unless %w[query1 query2 query3 query4].include? type 
       render :index
     else
       result  = ''
