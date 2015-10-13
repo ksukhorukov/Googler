@@ -2,7 +2,7 @@ common: &default
   adapter: postgresql
   encoding: unicode
   host: localhost
-  pool: 5
+  pool: 25
   username: googler
   password: googler_password
 
