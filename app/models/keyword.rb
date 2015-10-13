@@ -9,4 +9,7 @@ class Keyword < ActiveRecord::Base
 
   has_many :statistics, dependent: :delete_all
 
+  validates_presence_of :user_id
+  validates_presence_of :keys
+
 end

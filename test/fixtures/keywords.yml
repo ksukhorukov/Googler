@@ -9,3 +9,19 @@
 # #
 # two: {}
 # #  column: value
+
+  # create_table "keywords", force: :cascade do |t|
+  #   t.integer  "user_id"
+  #   t.string   "name",        null: false
+  #   t.string   "description", null: false
+  #   t.string   "keys",        null: false
+  #   t.datetime "created_at",  null: false
+  #   t.datetime "updated_at",  null: false
+  # end
+
+test_set:
+  user_id: 1
+  name: "test set"
+  description: "test set"
+  keys: 'files/test.csv'
+
