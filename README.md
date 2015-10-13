@@ -27,7 +27,9 @@ $ sidekiq -C config/sidekiq.yml -d
 $ rails s
 ```
 
-Enjoy!
+## Debug
+
+Sometimes Mechanize fails to open google.com and make a search query. In this case go to http://localhost:3000/sidekiq and check the default queue for any error messages.
 
 ## API 
 
