@@ -74,7 +74,7 @@ module GoogleParser
       end
       urls
     else
-      []
+      ''
     end
   end
 
@@ -89,7 +89,7 @@ module GoogleParser
       end
       urls
     else
-      []
+      ''
     end
   end
 
@@ -115,7 +115,7 @@ module GoogleParser
       end
       urls
     else
-      []
+      ''
     end
   end
 
