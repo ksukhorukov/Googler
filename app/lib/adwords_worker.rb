@@ -5,14 +5,16 @@ class AdwordsWorker
   def perform(keywords_set_id, user_id, keyword)
 
     curl = CURL.new
-    agent = Mechanize.new
+
+    #agent = Mechanize.new
     
-    page = agent.get('http://www.google.com')
-    google_form = page.form('f')
-    google_form.q = keyword
-    page_body = agent.submit(google_form)
+    # page = agent.get('http://www.google.com')
+    # google_form = page.form('f')
+    # google_form.q = keyword
+    # page_body = agent.submit(google_form)
     
-    page = curl.get(page_body.uri.to_s)
+    page = curl.get(generate_url(keyword))
+    page_body = Nokogiri::HTML(page)
     
     ActiveRecord::Base.transaction do
 
