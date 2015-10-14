@@ -2,20 +2,24 @@ class AdwordsWorker
   include Sidekiq::Worker 
   include GoogleParser
 
-  def perform(keywords_set_id, user_id, words)
+  def perform(keywords_set_id, user_id, keyword)
 
      curl = CURL.new
-     agent = Mechanize.new
+     #agent = Mechanize.new
      
-     words.each do |keyword|
+     #words.each do |keyword|
       
-      agent.user_agent_alias = random_agent
-      page = agent.get('http://www.google.com')
-      google_form = page.form('f')
-      google_form.q = keyword
-      page_body = agent.submit(google_form)
+      # agent.user_agent_alias = random_agent
+      # page = agent.get('http://www.google.com')
+      # google_form = page.form('f')
+      # google_form.q = keyword
+      # page_body = agent.submit(google_form)
+      
+      page = curl.get(generate_url(keyword))
+      page_body = Nokogiri::HTML(page)
 
       ActiveRecord::Base.transaction do
+
         statistics = Statistic.new
 
         statistics.word  = keyword
@@ -33,13 +37,16 @@ class AdwordsWorker
 
         statistics.save
 
-        cached = curl.get(page_body.uri.to_s)
+        "valid save for keyword #{keyword}: #{statistics.valid?}"
+
+        #cached = curl.get(page_body.uri.to_s)
         cache = Cache.new(:statistic_id => statistics.id)
-        cache.cache = cached
+        cache.cache = page
         cache.save
+      
       end
-    
-    end
+
+    # end
   end
 
 end

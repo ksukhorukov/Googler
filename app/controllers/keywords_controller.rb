@@ -20,8 +20,8 @@ class KeywordsController < ApplicationController
     @keyword.user_id = current_user.id
     if @keyword.save
       words = File.read(@keyword.keys.file.path).split(',')
-      words.each_slice(100) do |words_slice|
-        AdwordsWorker.perform_async(@keyword.id, current_user.id, words_slice)
+      words.each do |keyword|
+        AdwordsWorker.perform_async(@keyword.id, current_user.id, keyword)
       end
       flash[:success] = "New keywords set created! Performing statistics collection on the background."
       redirect_to keywords_path
