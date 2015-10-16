@@ -4,7 +4,7 @@ Technical description of the project can be found [here][todo].
 
 Generally speaking you signup & login, upload comma separated file with the search keywords and monitor the AdWords statistics. Profit!
 
-# Genetal requirements 
+# General requirements 
 
 * Rails
 * Postgresql
