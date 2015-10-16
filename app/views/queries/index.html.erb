@@ -20,13 +20,12 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">How many times a specific URL shows up in SEO</h3>
+        <h3 class="panel-title">Create new media item</h3>
       </div>
       <div class="panel-body">
-        <%= form_tag('/queries', method: 'post') do %>
-          <%= label_tag(:url, "URL:") %>
-          <%= text_field_tag(:url) %>
-          <%= hidden_field_tag(:type, 'query2') %>
+        <%= form_tag("/collections/#{params[:collection_id]}/items/new", method: 'post') do %>
+          <%= label_tag(:name, "URL:") %>
+          <%= text_field_tag(:name) %>
           <%= submit_tag("Submit") %>
         <% end %>
       </div>

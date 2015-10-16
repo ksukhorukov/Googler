@@ -75,16 +75,16 @@ ActiveRecord::Schema.define(version: 20151012184131) do
   create_table "statistics", force: :cascade do |t|
     t.integer "keyword_id"
     t.integer "user_id"
-    t.integer "adw_top",       null: false
-    t.integer "adw_right",     null: false
-    t.integer "adw_total",     null: false
-    t.string  "top_urls",      null: false
-    t.string  "right_urls",    null: false
-    t.integer "non_adw",       null: false
-    t.string  "urls_non_adw",  null: false
-    t.integer "links_total",   null: false
-    t.string  "total_results", null: false
-    t.string  "word",          null: false
+    t.integer "adw_top"
+    t.integer "adw_right"
+    t.integer "adw_total"
+    t.string  "top_urls"
+    t.string  "right_urls"
+    t.integer "non_adw"
+    t.string  "urls_non_adw"
+    t.integer "links_total"
+    t.string  "total_results"
+    t.string  "word"
   end
 
   create_table "users", force: :cascade do |t|

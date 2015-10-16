@@ -2,6 +2,9 @@ require 'csv'
 
 class KeywordsController < ApplicationController
 
+  before_action :logged_in_user
+  before_action :correct_user
+
   def index
     @keywords = Keyword.where(user_id: current_user.id)
   end
@@ -41,6 +44,19 @@ class KeywordsController < ApplicationController
  def keyword_params
     params.require(:keyword).permit(:name, :description, :keys)
   end 
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @user = User.find(current_user.id)
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
 
 end
